@@ -36,9 +36,9 @@ except Exception as e:
 @st.cache_resource
 def load_models():
     try:
-        model = joblib.load("components/diabetes_model.pkl")
-        scaler = joblib.load("components/diabetes_scaler.pkl")
-        with open("components/diabetes_model_info.pkl", "rb") as f:
+        model = joblib.load("diabetes_model.pkl")
+        scaler = joblib.load("diabetes_scaler.pkl")
+        with open("diabetes_model_info.pkl", "rb") as f:
             model_info = pickle.load(f)
         return model, scaler, model_info
     except FileNotFoundError:
@@ -69,3 +69,4 @@ if model is not None:
         prediction = model.predict(features_scaled)[0]
 
         st.success(f"Predicción de progresión de la diabetes (medida continua): **{prediction:.2f}**")
+
